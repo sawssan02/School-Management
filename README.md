@@ -1,6 +1,5 @@
 # Gestion de Centre de Soutien Scolaire, Langue et Formation IT
 
-Ce projet vise à établir un système de gestion de base de données pour un centre de cours de soutien scolaire, langue et formation IT. Il utilise HTML, CSS, JavaScript, Flask et SQLite pour la gestion des données et l’interaction avec les utilisateurs.
 
 ## Description
 

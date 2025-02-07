@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étudiant ajouté avec succès</title>
+    <style>
+         body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #c7bdbd;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #004AAD;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+h1 {
+    color: #fcfbfb;
+}
+
+p {
+    color: #f9f8f8;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Ajoutez des styles supplémentaires selon vos besoins */
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Étudiant ajouté avec succès</h1>
+    <p>L'étudiant suivant a été ajouté avec succès :</p>
+    <ul>
+        <li><strong>Nom:</strong> {{ nom }}</li>
+        <li><strong>Prénom:</strong> {{ prenom }}</li>
+        <li><strong>Email:</strong> {{ email }}</li>
+        <li><strong>Module:</strong> {{ typeetud }}</li>
+    </ul>
+</div>
+
+</body>
+</html>

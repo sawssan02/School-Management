@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('cont.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 20px;
+    background-color:transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(243, 240, 240, 0);
+}
+
+.contact {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color:rgba(249, 246, 246, 0.7);
+    border-radius: 5px;
+}
+
+.contact img {
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 10px;
+}
+
+.contact h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.contact p {
+    margin: 5px 0;
+    font-size: 14px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Données de la Base de Données</h1>
+    
+    <ul>
+        {% for item in data %}
+            <li>{{ item.ID_Groupe }}, {{ item.Type }}, {{ item.Jour }}, {{ item.Heure_debut }}, {{ item.Heure_fin }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

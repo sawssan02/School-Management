@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion avec Code Secret</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+    <div class="navigation">
+        <ul>
+            <li><a href="{{ url_for('omega') }}">Accueil</a></li>
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            <li><a href="{{ url_for('etudiant_login') }}">Etudiant</a></li>
+            <li><a href="{{ url_for('prof_login') }}">Professeur</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Connexion</h2>
+        </div>
+        <div class="login-form">
+            <label for="secretCode">Code Secret:</label>
+            <input type="password" id="secretCode" name="secretCode" required>
+            <div id="error-message"></div>
+            <button onclick="checkSecretCode()">Se Connecter</button>
+        </div>
+    </div>
+
+    <script>
+      // static/check_secret_code.js
+
+function checkSecretCode() {
+    var enteredCode = document.getElementById('secretCode').value;
+    var correctCode = '2023'; // Remplacez ceci par votre code secret réel
+    var errorMessageElement = document.getElementById('error-message');
+
+    if (enteredCode === correctCode) {
+        // Redirection vers une autre page
+        window.location.href = '{{ url_for("menugestion") }}';
+    } else {
+        // Affichage d'un message d'erreur
+        errorMessageElement.textContent = 'Code secret incorrect. Veuillez réessayer.';
+        errorMessageElement.style.display = 'block';
+    }
+}
+
+// Ajouter un gestionnaire d'événements pour la touche "Enter"
+document.getElementById('secretCode').addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        checkSecretCode();
+    }
+});
+  </script>
+</body>
+</html>

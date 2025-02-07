@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>centre scolaire</title>
+  <!-- Intégration de Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='inscription.css') }}"> 
+        
+    
+</head>
+<body>
+<div class="header">
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('omega') }}">Accueil</a></li>
+                <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                <li><a href="{{ url_for('etudiant_login') }}">Etudiant</a></li>
+                <li><a href="{{ url_for('prof_login') }}">Professeur</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <div class="row mx-auto">
+        <form action="{{ url_for('traitement') }}" method="post">
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" class="form-control" id="nom" name="nom" style="background-color:rgba(255, 255, 255, 0.6);" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom:</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" style="background-color: rgba(255, 255, 255, 0.6);" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" name="email" style="background-color:rgba(255, 255, 255, 0.6);" required>
+            </div>
+
+            <div class="form-group">
+                <label for="CNE">CNE:</label>
+                <input type="CNE" class="form-control" id="CNE" name="CNE" style="background-color:rgba(255, 255, 255, 0.6);" required>
+            </div>
+
+            <div class="form-group">
+                <label for="choix">Choix:</label>
+                <select class="form-control" id="choix" name="choix" style="background-color:rgba(255, 255, 255, 0.6);" required>
+                    <option value="soutien">Soutien Scolaire</option>
+                    <option value="langues">Langues</option>
+                    <option value="informatique">Formation en Informatique</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="type">Sélectionnez le type d'établissement :</label>
+              <select class="form-control" id="type" name="type" style=" background-color: rgba(255, 255, 255, 0.6);" required>
+                  <option value="college">Collège</option>
+                  <option value="lycee">Lycée</option>
+                  <option value="autre">Autre</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="niveau">Sélectionnez le niveau :</label>
+            <select class="form-control" id="niveau" name="niveau" style="background-color: rgba(255, 255, 255, 0.6);" required>
+                {% if type == 'college' %}
+                    <option value="1ere_annee">1ère année</option>
+                    <option value="2eme_annee">2ème année</option>
+                    <option value="3eme_annee">3ème année</option>
+                {% elif type == 'lycee' %}
+                    <option value="tronc_commun">Tronc commun</option>
+                    <option value="1ere_annee_bac">1ère année Bac</option>
+                    <option value="2eme_annee_bac">2ème année Bac</option>
+                {% elif type == 'autre' %}
+                  <option value="autre">autre</option>
+                    <!-- Ajoutez ici les options spécifiques pour le type "autre" -->
+                {% endif %}
+            </select>
+        </div>
+        
+                
+              
+              <!-- Champs spécifiques pour le soutien scolaire -->
+              <div id="soutienDetails" style="display: none;">
+                <div class="form-group">
+                  <label for="matiere">Matière:</label>
+                  <select class="form-control" id="matiere" name="matiere" style="background-color: rgba(255, 255, 255, 0.6);">
+                    <option value="math">Math</option>
+                    <option value="physique">Physique</option>
+                    <option value="svt">SVT</option>
+                    <!-- Ajoutez d'autres matières ici -->
+                  </select>
+                </div>
+          
+                <!-- Ajoutez d'autres champs spécifiques au soutien scolaire ici -->
+              </div>
+          
+              <!-- Champs spécifiques pour les langues -->
+              <div id="languesDetails" style="display: none;">
+                <div class="form-group">
+                  <label for="langue">Langue:</label>
+                  <select class="form-control" id="langue" name="langue" style="background-color:rgba(255, 255, 255, 0.6);">
+                    <option value="arabe">Arabe</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="francais">Français</option>
+                    <option value="espagnol">Espagnol</option>
+                    <option value="italie">Italie</option>
+                    <option value="allmagne">Allmagne</option>
+                    
+                    <!-- Ajoutez d'autres langues ici -->
+                  </select>
+                </div>
+                <!-- Ajoutez d'autres champs spécifiques aux langues ici -->
+              </div>
+    
+              <!-- Champs spécifiques pour la formation en informatique -->
+              <div id="informatiqueDetails" style="display: none;">
+                <div class="form-group">
+                  <label for="formation">Formation:</label>
+                  <select class="form-control" id="formation" name="formation" style="background-color: rgba(255, 255, 255, 0.6);">
+                    <option value="langage c">langage C</option>
+                    <option value="langage python">langage python</option>
+                    <option value="developpement web">Développement web</option>
+                  </select>
+                  </div>
+              </div>
+            <!-- Add other form groups as needed -->
+            <button type="submit" class="btn btn-primary" >s'inscrire</button>
+
+        </form>
+    </div>
+</div>
+
+<!-- Intégration de Bootstrap JavaScript (jQuery requis) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+  function updateButtonVisibility() {
+    var choixSelect = document.getElementById('choix');
+    var typeSelect = document.getElementById('type');
+    var niveauSelect = document.getElementById('niveau');
+    var matiereSelect = document.getElementById('matiere');
+    var langueSelect = document.getElementById('langue');
+    var formationSelect = document.getElementById('formation');
+    var inscrireButton = document.getElementById('inscrireButton');
+
+    if (choixSelect.value && typeSelect.value && niveauSelect.value) {
+        inscrireButton.style.display = 'block';
+    } else {
+        inscrireButton.style.display = 'none';
+    }
+}
+
+document.getElementById('choix').addEventListener('change', function () {
+    var soutienDetails = document.getElementById('soutienDetails');
+    var languesDetails = document.getElementById('languesDetails');
+    var informatiqueDetails = document.getElementById('informatiqueDetails');
+
+    soutienDetails.style.display = 'none';
+    languesDetails.style.display = 'none';
+    informatiqueDetails.style.display = 'none';
+
+    var matiereSelect = document.getElementById('matiere');
+    var langueSelect = document.getElementById('langue');
+    var formationSelect = document.getElementById('formation');
+
+    matiereSelect.value = null;
+    langueSelect.value = null;
+    formationSelect.value = null;
+
+    if (this.value === 'soutien') {
+        soutienDetails.style.display = 'block';
+    } else if (this.value === 'langues') {
+        languesDetails.style.display = 'block';
+    } else if (this.value === 'informatique') {
+        informatiqueDetails.style.display = 'block';
+    }
+    updateButtonVisibility();
+});
+
+document.getElementById('type').addEventListener('change', function () {
+    var niveauSelect = document.getElementById('niveau');
+    var matiereSelect = document.getElementById('matiere');
+    niveauSelect.innerHTML = '';
+
+    if (this.value === 'college') {
+        var niveauxCollege = ['1ere annee', '2eme annee', '3eme annee'];
+        niveauxCollege.forEach(function (niveau) {
+            var option = document.createElement('option');
+            option.value = niveau.toLowerCase().replace(/\s+/g, '_');
+            option.text = niveau;
+            niveauSelect.add(option);
+        });
+
+        var matieresCollege = ['math', 'physique', 'svt'];
+        matieresCollege.forEach(function (matiere) {
+            var option = document.createElement('option');
+            option.value = matiere.toLowerCase().replace(/\s+/g, '_');
+            option.text = matiere;
+            matiereSelect.add(option);
+        });
+    }else if (this.value === 'lycee') {
+        var niveauxLycee = ['Tronc commun', '1ere annee bac', '2eme annee bac'];
+        niveauxLycee.forEach(function(niveau) {
+            var option = document.createElement('option');
+            option.value = niveau.toLowerCase().replace(/\s+/g, '_');
+            option.text = niveau;
+            niveauSelect.add(option);
+        });
+
+        // Filtrer les matières en fonction du choix du niveau
+        niveauSelect.addEventListener('change', function() {
+            var selectedNiveau = this.value;
+            matiereSelect.innerHTML = ''; // Réinitialiser les options
+
+            if (selectedNiveau === 'tronc_commun') {
+                // Options pour Tronc commun
+                ['math', 'physique', 'svt'].forEach(function(matiere) {
+                    var option = document.createElement('option');
+                    option.value = matiere.toLowerCase().replace(/\s+/g, '_');
+                    option.text = matiere;
+                    matiereSelect.add(option);
+                });
+            } else if (selectedNiveau === '1ere_annee_bac') {
+                // Options pour 1ère année bac
+                ['francais', 'arabe', 'geographie', 'education islamique','math', 'physique', 'svt'].forEach(function(matiere) {
+                    var option = document.createElement('option');
+                    option.value = matiere.toLowerCase().replace(/\s+/g, '_');
+                    option.text = matiere;
+                    matiereSelect.add(option);
+                });
+            } else if (selectedNiveau === '2eme_annee_bac') {
+                // Options pour 2ème année bac
+                ['math', 'physique', 'svt', 'anglais', 'philosophie'].forEach(function(matiere) {
+                    var option = document.createElement('option');
+                    option.value = matiere.toLowerCase().replace(/\s+/g, '_');
+                    option.text = matiere;
+                    matiereSelect.add(option);
+                });
+            }
+            updateButtonVisibility();
+        });
+    } else if (this.value === 'autre') {
+        // Options spécifiques pour le type "autre"
+        niveauSelect.innerHTML = `
+            <option value="autre">Autre</option>
+            
+        `;
+    }
+    if (this.value === 'langues' || this.value === 'informatique') {
+        filiereSelect.value = null;
+    }
+});
+</script>
+</body>
+</html>

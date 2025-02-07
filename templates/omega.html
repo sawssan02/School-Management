@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Omega School</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="{{ url_for('static', filename='omega.css') }}">
+</head>
+<body>
+  <div class="navigation">
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('omega') }}">Accueil</a></li>
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            <li><a href="{{ url_for('etudiant_login') }}">Etudiant</a></li>
+            <li><a href="{{ url_for('prof_login') }}">Professeur</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <img src="{{ url_for('static', filename='first.jpg') }}" alt="Image de la rentrée scolaire">
+    <div class="hero-text">
+        <h2>La rentrée scolaire<br>Approche !</h2>
+        <br>
+      <i>Inscrivez-vous dès maintenant à nos cours de soutien scolaire,</i>
+      <br>
+      <i> de langues ou de formation informatique.</i>
+      <br>
+      <br>
+      <button onclick="window.location.href='{{ url_for('savoir') }}'">En savoir plus</button>
+
+    </div>
+  </div>
+<!--<p style="color:rgb(0, 0,0); text-align: center;">Copyright © Omega Center 2023</p>-->
+  <!-- Le reste de votre contenu -->
+</body>
+</html>

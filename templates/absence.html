@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des absences</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choisissez un groupe</h1>
+    <form id="groupForm" method="POST" action="{{ url_for('absence') }}">
+        <label for="group_id">Sélectionnez le groupe :</label>
+        <select id="group_id" name="group_id" required>
+            {% for group in groups %}
+                <option value="{{ group[0] }}">{{ group[1] }} - {{ group[2] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Afficher les étudiants</button>
+    </form>
+    {% if students %}
+        <!-- ... -->
+<form id="absenceForm" method="POST" action="{{ url_for('submit_absence') }}">
+    <!-- ... -->
+    {% for student in students %}
+        <label for="student_{{ student[0] }}">{{ student[1] }} {{ student[2] }}</label>
+        <input type="checkbox" name="student_ids" value="{{ student[0] }}" id="student_{{ student[0] }}">
+        <br>
+    {% endfor %}
+    <label for="date">Date :</label>
+    <input type="date" name="date" required>
+    <br><br>
+    <input type="submit" value="Enregistrer l'absence">
+</form>
+<!-- ... -->
+
+        <form id="presenceForm" method="POST" action="{{ url_for('submit_presence') }}">
+            {% for student in students %}
+                <label for="student_{{ student[0] }}">{{ student[1] }} {{ student[2] }}</label>
+                <input type="checkbox" name="student_ids" value="{{ student[0] }}" id="student_{{ student[0] }}">
+                <br>
+            {% endfor %}
+            <label for="date">Date :</label>
+            <input type="date" name="date" required>
+            <br><br>
+            <input type="submit" value="Enregistrer la présence">
+        </form>
+        </form>
+    {% endif %}
+    {% if students %}
+        <form id="absenceForm" method="POST" action="{{ url_for('submit_absence') }}">
+            <!-- ... (other form fields) ... -->
+           
+        </form>
+    {% endif %}
+    <script>
+        $(document).ready(function() {
+            // Charger les options du sélecteur de groupes au chargement de la page
+            $.ajax({
+                url: '/get_groups',  // Endpoint pour récupérer les groupes depuis le serveur
+                method: 'GET',
+                success: function(data) {
+                    $('#groupId').html(data);
+                }
+            });
+        });
+
+        function fetchStudents() {
+            // Récupérer l'ID du groupe sélectionné
+            var groupId = $('#groupId').val();
+
+            // Effectuer une requête AJAX pour obtenir les étudiants du groupe depuis la base de données
+            $.ajax({
+                url: '/get_students',
+                method: 'POST',
+                data: { groupId: groupId },
+                success: function(data) {
+                    $('#studentsList').html(
+                        '<label for="studentId">Sélectionnez l\'étudiant :</label>' +
+                        '<select id="studentId" name="studentId" required>' + data + '</select>' +
+                        '<label for="absenceDate">Date d\'absence :</label>' +
+                        '<input type="date" id="absenceDate" name="absenceDate" required>' +
+                        '<label for="absenceReason">Raison d\'absence :</label>' +
+                        '<textarea id="absenceReason" name="absenceReason" required></textarea>'
+                    );    
+                }
+            });
+        }
+
+        function submitAbsence(event) {
+            var studentId = $('#student_id').val();
+            var groupId = $('#group_id').val();  // Correction de l'ID
+            var absenceDate = $('#date').val();
+            var absenceReason = $('#reason').val();
+
+            // Effectuer une requête AJAX pour enregistrer l'absence dans la base de données
+            $.ajax({
+                url: '/submit_absence',
+                method: 'POST',
+                data: {
+                    student_id: studentId,
+                    group_id: groupId,  // Correction de l'ID
+                    date: absenceDate,
+                    reason: absenceReason
+                },
+                success: function () {
+                    alert('Absence enregistrée avec succès.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

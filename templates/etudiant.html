@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion avec Code Secret</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='etud.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Connexion</h2>
+        </div>
+        <div class="login-form">
+            <!-- Ajoutez l'attribut method à la balise form -->
+            <form method="post" action="{{ url_for('etudiant_login') }}">
+                <label for="CNE">CNE:</label>
+                <!-- Utilisez CNE comme name pour le champ CNE -->
+                <input type="text" id="CNE" name="CNE" required>
+
+                <br>
+
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <br>
+
+                <button type="submit">Se Connecter</button>
+            </form>
+            <div id="error-message">{{ error_message }}</div>
+        </div>
+    </div>
+
+</body>
+</html>

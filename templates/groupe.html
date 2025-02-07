@@ -1,0 +1,76 @@
+<!-- Fichier groupes.html dans le dossier templates -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Groupes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #1b1b1f;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des Groupes</h1>
+    
+    {% if groupes %}
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Niveau</th>
+                <th>ID Prof</th>
+                <th>Heure de Début</th>
+                <th>Heure de Fin</th>
+                <th>Jour</th>
+                <th>Capacité</th>
+            </tr>
+            {% for groupe in groupes %}
+                <tr>
+                    <td>{{ groupe[0] }}</td>
+                    <td>{{ groupe[1] }}</td>
+                    <td>{{ groupe[2] }}</td>
+                    <td>{{ groupe[3] }}</td>
+                    <td>{{ groupe[4] }}</td>
+                    <td>{{ groupe[5] }}</td>
+                    <td>{{ groupe[6] }}</td>
+                    <td>{{ groupe[7] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Aucun groupe disponible.</p>
+    {% endif %}
+</body>
+</html>

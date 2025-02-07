@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+</head>
+</head>
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <main>
+        <!-- Contact 1 -->
+        <div class="contact">
+            <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook Logo">
+            <h2>Facebook</h2>
+            <p>www.facebook.com</p>
+        </div>
+
+        <!-- Contact 2 -->
+        <div class="contact">
+            <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram Logo">
+            <h2>Instagram</h2>
+            <p>www.omega-center.com</p>
+        </div>
+
+        <!-- Contact 3 -->
+        <div class="contact">
+            <img src="{{ url_for('static', filename='whatsapp.png') }}"  alt="WhatsApp Logo">
+            <h2>WhatsApp</h2>
+            <p>+212 622661384</p>
+        </div>
+
+        <!-- Contact 4 -->
+        <div class="contact">
+            <img src="{{ url_for('static', filename='email.png') }}"  alt="Email Logo">
+            <h2>Email</h2>
+            <p>omega-center@gmail.com</p>
+        </div>
+
+        <!-- Contact 5 -->
+        <div class="contact">
+            <img src="{{ url_for('static', filename='telephone.png') }}"  alt="Phone Logo">
+            <h2>Téléphone</h2>
+            <p>05 33 45 76 98 67</p>
+        </div>
+    </main>
+
+</body>
+</html>

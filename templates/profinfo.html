@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations du professeur</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='prof.css') }}">
+</head>
+<body>
+    <div class="profinfo-container">
+        <div class="profinfo-header">
+            <h2>Informations du professeur</h2>
+        </div>
+        <div class="profinfo-content">
+                <p><strong>ID:</strong> {{ professeur[0] }}</p>
+                <p><strong>Nom:</strong> {{ professeur[1] }}</p>
+                <p><strong>prenom:</strong> {{ professeur[2] }}</p>
+                <p><strong>tele</strong> {{ professeur[3] }}</p>
+                <p><strong>email:</strong> {{ professeur[4] }}</p>
+                <p><strong>Module:</strong> {{ professeur[5] }}</p>
+        </div>
+    </div>
+    
+</body>
+</html>

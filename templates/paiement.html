@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau des paiements</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0d279b;
+            color: #fff;
+        }
+
+        input[type="checkbox"] {
+            display: block;
+            margin: auto;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            text-align: center;
+        }
+
+        form {
+            width: 80%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 10px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #2d0b7c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #350ea1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulaire des paiements des étudiants</h1>
+
+    
+    <form id="paymentForm">
+        <label for="studentId">ID de l'étudiant:</label>
+        <input type="text" id="studentId" name="studentId" required>
+
+        <label for="montant">Montant:</label>
+        <input type="number" id="montant" name="montant" required>        
+
+        <label for="paymentDate">Date de Paiement:</label>
+        <input type="date" id="paymentDate" name="paymentDate" required>
+
+        <label for="sessionsToPay">Séances à Payer:</label>
+        <input type="number" id="sessionsToPay" name="sessionsToPay" value="1" required>
+
+        <label for="type_de_seance">type de seance:</label>
+        <input type="text" id="type_de_seance" name="type_de_seance" required>       
+
+        <input type="submit" value="Payer">
+    </form>
+    <div id="successMessage" style="display: none; color: rgb(1, 27, 160); font-weight: bold; margin-top: 10px;">
+        Paiement effectué avec succès.
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const paymentForm = document.getElementById('paymentForm');
+            
+            paymentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Récupérer les valeurs des champs du formulaire
+                const studentId = document.getElementById('studentId').value;
+                const montant = document.getElementById('montant').value;
+                const paymentDate = document.getElementById('paymentDate').value;
+                const sessionsToPay = document.getElementById('sessionsToPay').value;
+                const type_de_seance = document.getElementById('type_de_seance').value;
+                
+                // Effectuer une requête AJAX pour enregistrer le paiement
+                const xhr = new XMLHttpRequest();
+                const url = '/paiement';
+
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Paiement enregistré avec succès.');
+                        // Show the success message
+                        document.getElementById('successMessage').style.display = 'block';
+                        // Optionally, you can reset the form or redirect the user
+                    } else {
+                        console.error('Erreur lors de l\'enregistrement du paiement.');
+                    }
+                };
+
+                const data = JSON.stringify({
+                    id: studentId,
+                    montant: montant,
+                    date_paiement: paymentDate,
+                    sessions_payer: sessionsToPay,
+                    type_de_seance:type_de_seance
+                });
+
+                xhr.send(data);
+            });
+        });
+    </script>
+</body>
+</html>

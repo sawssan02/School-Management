@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Étudiants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='etudiantlist.css') }}">
+    <!-- Ajoutez le lien vers votre fichier CSS si nécessaire -->
+</head>
+<body>
+    <h1>Gestion des Étudiants</h1>
+
+    <!-- Formulaire pour rechercher un étudiant par nom, prénom, CNE, matière, langue, formation -->
+    <h2>Rechercher un Étudiant</h2>
+    <form method="GET" action="{{ url_for('rechercher_etudiant') }}">
+        <label for="critere">Critère de recherche :</label>
+        <select id="critere" name="critere">
+            <option value="nom">Nom</option>
+            <option value="prenom">Prénom</option>
+            <option value="CNE">CNE</option>
+            <option value="matiere">Matière</option>
+            <option value="langue">Langue</option>
+            <option value="formation">Formation</option>
+            <option value="group_id">Id Groupe</option>
+            <option value="id">Id</option>
+        </select>
+        
+        <label for="search_term">Terme de recherche :</label>
+        <input type="text" id="search_term" name="search_term" oninput="rechercherEtudiant()">
+        
+    </form>
+
+    <!-- Affichage des étudiants -->
+    <h2>Liste des Étudiants</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Choix</th>
+            <th>Type</th>
+            <th>Niveau</th>
+            <th>CNE</th>
+            <th>Matière</th>
+            <th>Langue</th>
+            <th>Formation</th>
+            <th>Id Groupe</th>
+        </tr>
+        
+        {% for etudiant in etudiants %}
+            <tr>
+                <td>{{ etudiant[0] }}</td>
+                <td>{{ etudiant[1] }}</td>
+                <td>{{ etudiant[2] }}</td>
+                <td>{{ etudiant[3] }}</td>
+                <td>{{ etudiant[4] }}</td>
+                <td>{{ etudiant[5] }}</td>
+                <td>{{ etudiant[6] }}</td>
+                <td>{{ etudiant[7] }}</td>
+                <td>{{ etudiant[8] }}</td>
+                <td>{{ etudiant[9] }}</td>
+                <td>{{ etudiant[10] }}</td>
+                <td>{{ etudiant[11] }}</td>
+                <td>
+                    <!-- Bouton pour supprimer le professeur -->
+                    <form method="POST" action="{{ url_for('supprimer_etudiant', etudiant_id=etudiant[0]) }}">
+                        <input type="submit" value="Supprimer" class="supprimer-bouton">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        function rechercherEtudiant() {
+            // Récupérer la valeur saisie dans le champ de recherche
+            var recherche = document.getElementById('search_term').value.toUpperCase();
+
+            // Récupérer le critère de recherche sélectionné
+            var critere = document.getElementById('critere').value;
+
+            // Récupérer toutes les lignes du tableau
+            var lignes = document.getElementsByTagName('tr');
+
+            // Parcourir toutes les lignes et afficher celles qui correspondent à la recherche
+            for (var i = 1; i < lignes.length; i++) {
+                var valeurCritere;
+                switch (critere) {
+                    case 'id':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[0].innerText.toUpperCase();
+                        break;
+                    case 'nom':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[1].innerText.toUpperCase();
+                        break;
+                    case 'prenom':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[2].innerText.toUpperCase();
+                        break;
+                    case 'CNE':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[7].innerText.toUpperCase();
+                        break;
+                    case 'matiere':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[8].innerText.toUpperCase();
+                        break;
+                    case 'langue':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[9].innerText.toUpperCase();
+                        break;
+                    case 'formation':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[10].innerText.toUpperCase();
+                        break;
+                    case 'group_id':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[11].innerText.toUpperCase();
+                        break;
+                    default:
+                        // Gestion d'un critère inconnu
+                        valeurCritere = '';
+                }
+
+                // Afficher ou masquer la ligne en fonction de la correspondance
+                if (valeurCritere.indexOf(recherche) > -1) {
+                    lignes[i].style.display = '';
+                } else {
+                    lignes[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('admin.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.menu-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 400px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-header {
+    background: linear-gradient(to right, #0A4CB0, #0A4CB0);
+    padding: 20px;
+    color: #fcf9f9;
+    text-align: center;
+    
+}
+
+.menu-options {
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.menu-options a{
+    display: block;
+    color: #000000;
+    background: linear-gradient(to right, #F1F2F2 , #F1F2F2);
+    padding: 25px 40px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.menu-options a:hover {
+    background: linear-gradient(to right, #0A4CB0, #0A4CB0);
+}
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+    z-index: 1000;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.navigation li {
+    margin-right: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #fdfdfd;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Cabin', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+}
+
+.navigation a:hover {
+    color: #ff0000;
+}

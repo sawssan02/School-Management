@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Professeurs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='professeur.css') }}">
+    <!-- Ajoutez le lien vers votre fichier CSS si nécessaire -->
+    <script>
+        function rechercherProfesseur() {
+            // Récupérer la valeur saisie dans le champ de recherche
+            var recherche = document.getElementById('search_term').value.toUpperCase();
+    
+            // Récupérer le critère de recherche sélectionné
+            var critere = document.getElementById('critere').value;
+    
+            // Récupérer toutes les lignes du tableau
+            var lignes = document.getElementsByTagName('tr');
+    
+            // Parcourir toutes les lignes et afficher celles qui correspondent à la recherche
+            for (var i = 1; i < lignes.length; i++) {
+                var valeurCritere;
+                switch (critere) {
+                    case 'nom':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[1].innerText.toUpperCase();
+                        break;
+                    case 'prenom':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[2].innerText.toUpperCase();
+                        break;
+                    case 'id':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[0].innerText.toUpperCase();
+                        break;
+                    case 'module':
+                        valeurCritere = lignes[i].getElementsByTagName('td')[5].innerText.toUpperCase();
+                        break;
+                    default:
+                        // Gestion d'un critère inconnu
+                        valeurCritere = '';
+                }
+    
+                // Afficher ou masquer la ligne en fonction de la correspondance
+                if (valeurCritere.indexOf(recherche) > -1) {
+                    lignes[i].style.display = '';
+                } else {
+                    lignes[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <h1>Gestion des Professeurs</h1>
+
+    <h2>Rechercher un Professeur</h2>
+<form method="GET" action="{{ url_for('rechercher_professeur') }}">
+    <label for="critere">Critère de recherche :</label>
+    <select id="critere" name="critere">
+        <option value="nom">Nom</option>
+        <option value="prenom">Prénom</option>
+        <option value="id">ID</option>
+        <option value="module">Module</option>
+    </select>
+    
+    <label for="search_term">Terme de recherche :</label>
+    <input type="text" id="search_term" name="search_term" oninput="rechercherProfesseur()">
+</form>
+    <!-- Affichage des professeurs -->
+    <h2>Liste des Professeurs</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>Module</th>
+            <th>Action</th>
+        </tr>
+        {% for professeur in professeurs %}
+            <tr>
+                <td>{{ professeur[0] }}</td>
+                <td>{{ professeur[1] }}</td>
+                <td>{{ professeur[2] }}</td>
+                <td>{{ professeur[3] }}</td>
+                <td>{{ professeur[4] }}</td>
+                <td>{{ professeur[5] }}</td>
+                <td>
+                    <!-- Bouton pour supprimer le professeur -->
+                    <form method="POST" action="{{ url_for('supprimer_professeur', professeur_id=professeur[0]) }}">
+                        <input type="submit" value="Supprimer">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Formulaire pour ajouter un professeur -->
+    <h2>Ajouter un Professeur</h2>
+    <form method="POST" action="{{ url_for('ajouter_professeur') }}">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+
+        <label for="telephone">Téléphone :</label>
+        <input type="text" id="telephone" name="telephone" required>
+
+        <label for="email_prof">Email :</label>
+        <input type="email_prof" id="email_prof" name="email_prof" required>
+
+        <label for="type_prof">Module :</label>
+        <input type="text" id="type_prof" name="type_prof" required>
+
+        
+        <input type="submit" value="Ajouter Professeur">
+    </form>
+</body>
+</html>

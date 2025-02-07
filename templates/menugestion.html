@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Gestion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menugestion.css') }}">
+</head>
+<body>
+    <div class="navigation">
+        <ul>
+            <li><a href="{{ url_for('omega') }}">Accueil</a></li>
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            <li><a href="{{ url_for('etudiant_login') }}">Etudiant</a></li>
+            <li><a href="{{ url_for('prof_login') }}">Professeur</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </div>
+    <div class="menu-container">
+        <div class="menu-header">
+            <h2>Menu de Gestion</h2>
+        </div>
+        <div class="menu-options">
+            <a href="{{ url_for('salle') }}">Gestion des Salles</a>
+            <a href="{{ url_for('absence') }}">Gestion des Absences</a>
+            <a href="{{ url_for('inscription') }}">Gestion des Inscriptions</a>
+            <a href="{{ url_for('paiement') }}">Gestion des Paiements</a>
+            <a href="{{ url_for('groupe') }}">Gestion des Groupes</a>
+            <a href="{{ url_for('afficher_professeurs') }}">Gestion des Professeurs</a>
+            <a href="{{ url_for('afficher_etudiants') }}">Gestion des Etudiants</a>
+        </div>
+    </div>
+</body>
+</html>

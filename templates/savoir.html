@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A propos de notre centre</title>
+  <style>
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{{ url_for('static', filename='savoirimag.jpg') }}");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .header {
+        background-color: #f5f5f5; /* Changement de la couleur du header en gris très clair */
+        color: #333; /* Changement de la couleur du texte en gris foncé */
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 5px solid #ccc; /* Changement de la couleur de la bordure du header */
+        margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2F80ED;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature {
+      flex: 1 1 300px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature h3 {
+      color: #2F80ED;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      color: #333;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cta button {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #2F80ED;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: buttonAnimate 0.5s infinite alternate;
+    }
+
+    @keyframes buttonAnimate {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-5px);
+      }
+    }
+
+    .cta button:hover {
+      background-color: #1F4E82;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Centre OMEGA Ω</h1>
+  </div>
+  <div class="content">
+    <div class="feature">
+      <h3>100% de réussite de nos étudiants</h3>
+      <p>Nos étudiants réussissent brillamment grâce à nos programmes de qualité.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Certificats reconnus à l'échelle nationale</h3>
+      <p>Nos certificats sont hautement recommandés et reconnus.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Nos professeurs parmi les meilleurs au Maroc et à l'étranger</h3>
+      <p>Des enseignants expérimentés et qualifiés qui garantissent un apprentissage optimal.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Langues, formations en informatique, cours de soutien...</h3>
+      <p>Une large gamme de programmes pour répondre à divers besoins académiques.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button onclick="window.history.back()">Retour</button>
+  </div>
+</body>
+</html>

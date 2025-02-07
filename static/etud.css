@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('admin.jpg') center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 500px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    background: #004AAD;
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.login-form {
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#error-message {
+    color: red;
+    margin-bottom: 10px;
+    display: none;
+}
+
+button {
+    background: #004AAD;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.0);
+    z-index: 1000;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.navigation li {
+    margin-right: 30px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #fdfdfd;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Cabin', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+}
+
+.navigation a:hover {
+    color: #ff0000;
+}
+.cadre {
+    border: 2px solid #ede6e6; /* Couleur et épaisseur de la bordure */
+    background-color: #ede6e6;
+    padding: 10px; /* Espace intérieur du cadre */
+    margin: 10px 0; /* Marge extérieure du cadre */
+}

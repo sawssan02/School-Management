@@ -1,0 +1,39 @@
+body {
+    background-image: url('log.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f4f4f4;
+    color: #ffffff;
+    
+}
+
+form {
+    width: 500px;
+    margin: auto;
+}
+
+.header {
+    height: 80px;
+    margin: 10px;
+    text-align: right;
+    font-family: 'Cabin', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+
+}
+
+nav ul li{
+    list-style-type: none;
+    display:inline-block;
+    padding: 15px;
+}
+ul li a{
+    color:#ffffff;
+    letter-spacing: o.5rem;
+    
+}
+ul li a:hover{
+    color:#fd0a0a;
+}
+input[type="search"]{
+    font-size:17px;
+
+}

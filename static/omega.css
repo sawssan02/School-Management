@@ -1,0 +1,83 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+.hero {
+    position: relative;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+.hero img {
+    width: 100%;
+    height: auto;
+  }
+.hero-text {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 0, 0);
+  }
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 0px;
+  }
+.hero i {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+.hero button {
+    background-color:#3b06fd;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+.hero button:hover {
+    background-color: #3b1313;
+  }
+.navigation {
+          position: fixed;
+          top: 0;
+          left: 0;
+          background: transparent;
+          width: 100%;
+          padding: 15px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.0);
+          z-index: 1000;
+      }
+
+.navigation ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: right;
+      }
+
+.navigation li {
+          margin-right: 30px;
+      }
+
+.navigation a {
+          text-decoration: none;
+          color: #0b0606;
+          font-weight: bold;
+          font-size: 16px;
+          font-family: 'Cabin', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+      }
+
+.navigation a:hover {
+          color: #ff0000;
+      }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations de l'étudiant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='etud.css') }}">
+</head>
+<body>
+    <div class="etudinfo-container">
+        <div class="etudinfo-header" style="color: aliceblue;">
+            <h2>Informations de l'étudiant</h2>
+        </div>
+        <div class="cadre">
+            <p><strong>Nom:</strong> {{ etudiant[1] }}</p>
+            <p><strong>Prénom:</strong> {{ etudiant[2] }}</p>
+            <p><strong>Email:</strong> {{ etudiant[3] }}</p>
+            <p><strong>Choix:</strong> {{ etudiant[4] }}</p>
+            <p><strong>type:</strong> {{ etudiant[5] }}</p>
+            <p><strong>Niveau:</strong> {{ etudiant[6] }}</p>
+            <p><strong>CNE:</strong> {{ etudiant[7] }}</p>
+            <p><strong>Matière:</strong> {{ etudiant[8] }}</p>
+            <p><strong>Langue:</strong> {{ etudiant[9] }}</p>
+            <p><strong>Formation:</strong> {{ etudiant[10] }}</p>
+            <p><strong>ID Groupe:</strong> {{ etudiant[11] }}</p>
+            <p><strong>Salle:</strong> {{ salle_info[1] }}</p>
+            <p><strong>Horaire:</strong> {{ salle_info[3] }} - {{ salle_info[4] }}</p>
+            <p><strong>Jour:</strong> {{ salle_info[5] }}</p>
+        </div>
+    </div>
+
+</body>
+</html>
